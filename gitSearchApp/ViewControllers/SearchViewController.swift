@@ -11,8 +11,9 @@ class SearchViewController: UIViewController {
 
     @IBOutlet weak var githubSearchBar: UISearchBar!
     @IBOutlet weak var searchResultsTableView: UITableView!
-    var searchResults: GithubSearchResponse?
+    var searchResults: [RepositoryInfo] = []
     var errorMessage: String = ""
+    let githubClient = GithubAPIClient()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +24,14 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print(searchBar.text ?? "no text here")
-        GithubAPIClient.getRepositoriesForSearchQuery(query: searchBar.text ?? "no text here") { (response, error) in
-            if let response = response {
+        githubClient.getRepositoriesForSearchQuery(query: searchBar.text ?? "no text here") { (response, error) in
+            if response.count > 0 {
                 print(response)
                 self.searchResults = response
             }
             else {
-                print(error!)
+                print(error)
+                self.errorMessage = error
             }
             self.searchResultsTableView.reloadData()
         }
@@ -39,16 +41,16 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let searchResults = searchResults else {
-            return 1
+        if searchResults.count > 0 {
+            return searchResults.count
         }
-        return searchResults.totalCount
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultCell")!
-        if let searchResults = searchResults, searchResults.totalCount >= indexPath.row {
-            cell.textLabel?.text = searchResults.items[indexPath.row].fullName
+        if searchResults.count > indexPath.row {
+            cell.textLabel?.text = searchResults[indexPath.row].name
         }
         else {
             cell.textLabel?.text = errorMessage

@@ -15,7 +15,6 @@
 		2D5AE3C2255433C80069BC68 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AE3C1255433C80069BC68 /* SearchViewController.swift */; };
 		2D5AE3C825543EF10069BC68 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AE3C725543EF10069BC68 /* SceneDelegate.swift */; };
 		2D5AE3D2255446E30069BC68 /* GithubSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AE3D1255446E30069BC68 /* GithubSearchResponse.swift */; };
-		2D5AE3D825545CB10069BC68 /* NetworkingTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AE3D725545CB10069BC68 /* NetworkingTasks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +28,6 @@
 		2D5AE3C1255433C80069BC68 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		2D5AE3C725543EF10069BC68 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2D5AE3D1255446E30069BC68 /* GithubSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchResponse.swift; sourceTree = "<group>"; };
-		2D5AE3D725545CB10069BC68 /* NetworkingTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingTasks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +74,6 @@
 		2D5AE3B925542D760069BC68 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2D5AE3D725545CB10069BC68 /* NetworkingTasks.swift */,
 				2D5AE3BC25542DE90069BC68 /* GithubAPIClient.swift */,
 				2D5AE3D1255446E30069BC68 /* GithubSearchResponse.swift */,
 			);
@@ -170,7 +167,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D5AE3D825545CB10069BC68 /* NetworkingTasks.swift in Sources */,
 				2D5AE3D2255446E30069BC68 /* GithubSearchResponse.swift in Sources */,
 				2D5AE3C2255433C80069BC68 /* SearchViewController.swift in Sources */,
 				2D5AE3BD25542DE90069BC68 /* GithubAPIClient.swift in Sources */,
