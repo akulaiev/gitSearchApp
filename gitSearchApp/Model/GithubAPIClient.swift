@@ -6,17 +6,17 @@
 //
 
 import Foundation
+import UIKit
 
 class GithubAPIClient {
     
     let searchBaseString: String = "https://api.github.com/search/repositories?"
-    let numOnPage = 3
+    let numOnPage = 15
     var queue: DispatchQueue = DispatchQueue.main
     let searchGroup = DispatchGroup()
     
     fileprivate func taskForRequest(request: URLRequest, completion: @escaping ([RepositoryInfo], String) -> Void) {
         queue.async(group: searchGroup) {
-            print(request)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 if let data = data {
                     do {
@@ -49,9 +49,9 @@ class GithubAPIClient {
             completion([], "An error has occured")
             return
         }
-        
+        let formattedQuery = query.replacingOccurrences(of: " ", with: "+")
         url.queryItems = [
-            URLQueryItem(name: "q", value: "\(query)+in:name"),
+            URLQueryItem(name: "q", value: "\(formattedQuery)+in:name"),
             URLQueryItem(name: "sort", value: "stars"),
             URLQueryItem(name: "order", value: "desc"),
             URLQueryItem(name: "per_page", value: "\(numOnPage)")]
@@ -72,8 +72,48 @@ class GithubAPIClient {
             }
         }
         searchGroup.notify(queue: .main) {
-            print(fullResponse)
             completion(fullResponse, returnError)
+        }
+    }
+    
+    func downloadUserImages(fetchedRepositories: [RepositoryInfo], completion: @escaping ([UIImage], String) -> Void) {
+        let imageDownloadGroup = DispatchGroup()
+        var images: [UIImage] = []
+        var returnError: String = ""
+        for repository in fetchedRepositories {
+            imageDownloadGroup.enter()
+            getUserImage(imageUrl: repository.owner.avatarURL) { (image, error) in
+                if let image = image {
+                    images.append(image)
+                }
+                else {
+                    returnError = error?.debugDescription ?? "An error downloading an image has occured"
+                }
+                imageDownloadGroup.leave()
+            }
+        }
+        imageDownloadGroup.notify(queue: .main) {
+            completion(images, returnError)
+        }
+    }
+    
+    func getUserImage(imageUrl: String, completion: @escaping (UIImage?, String?) -> Void) {
+        queue.async(group: searchGroup) {
+            let task = URLSession.shared.dataTask(with: URL(string: imageUrl)!) { (data, response, error) in
+                guard let data = data else {
+                    completion(nil, error?.localizedDescription)
+                    return
+                }
+                DispatchQueue.main.async {
+                    let image = UIImage(data: data)
+                    guard let resizedImage = HelperMethods.resizeImage(originalImage: image!, resizeRatio: 0.21) else {
+                            completion(nil, "An error with an image has occured")
+                            return
+                    }
+                    completion(resizedImage, nil)
+                }
+            }
+            task.resume()
         }
     }
 }

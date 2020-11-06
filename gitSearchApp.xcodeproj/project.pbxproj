@@ -15,6 +15,8 @@
 		2D5AE3C2255433C80069BC68 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AE3C1255433C80069BC68 /* SearchViewController.swift */; };
 		2D5AE3C825543EF10069BC68 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AE3C725543EF10069BC68 /* SceneDelegate.swift */; };
 		2D5AE3D2255446E30069BC68 /* GithubSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AE3D1255446E30069BC68 /* GithubSearchResponse.swift */; };
+		2D5AE3E32554AA200069BC68 /* SearchResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AE3E22554AA200069BC68 /* SearchResultsTableViewCell.swift */; };
+		2D5AE3E72554BA5D0069BC68 /* HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5AE3E62554BA5D0069BC68 /* HelperMethods.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		2D5AE3C1255433C80069BC68 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		2D5AE3C725543EF10069BC68 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2D5AE3D1255446E30069BC68 /* GithubSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchResponse.swift; sourceTree = "<group>"; };
+		2D5AE3E22554AA200069BC68 /* SearchResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewCell.swift; sourceTree = "<group>"; };
+		2D5AE3E62554BA5D0069BC68 /* HelperMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperMethods.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +66,12 @@
 			children = (
 				2D5AE39925542C840069BC68 /* AppDelegate.swift */,
 				2D5AE3C725543EF10069BC68 /* SceneDelegate.swift */,
+				2D5AE3E62554BA5D0069BC68 /* HelperMethods.swift */,
 				2D5AE3A725542C850069BC68 /* Info.plist */,
 				2D5AE3BB25542D990069BC68 /* Storyboards */,
 				2D5AE3BA25542D800069BC68 /* ViewControllers */,
 				2D5AE3B925542D760069BC68 /* Model */,
+				2D5AE3E12554A9E80069BC68 /* Views */,
 				2D5AE3A225542C850069BC68 /* Assets.xcassets */,
 			);
 			path = gitSearchApp;
@@ -95,6 +101,14 @@
 				2D5AE3A425542C850069BC68 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		2D5AE3E12554A9E80069BC68 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2D5AE3E22554AA200069BC68 /* SearchResultsTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +183,8 @@
 			files = (
 				2D5AE3D2255446E30069BC68 /* GithubSearchResponse.swift in Sources */,
 				2D5AE3C2255433C80069BC68 /* SearchViewController.swift in Sources */,
+				2D5AE3E32554AA200069BC68 /* SearchResultsTableViewCell.swift in Sources */,
+				2D5AE3E72554BA5D0069BC68 /* HelperMethods.swift in Sources */,
 				2D5AE3BD25542DE90069BC68 /* GithubAPIClient.swift in Sources */,
 				2D5AE39A25542C840069BC68 /* AppDelegate.swift in Sources */,
 				2D5AE3C825543EF10069BC68 /* SceneDelegate.swift in Sources */,

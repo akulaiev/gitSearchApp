@@ -7,7 +7,6 @@
 
 import Foundation
 
-// MARK: - GithubSearchResponse
 struct GithubSearchResponse: Codable {
     let totalCount: Int
     let incompleteResults: Bool
@@ -20,13 +19,13 @@ struct GithubSearchResponse: Codable {
     }
 }
 
-// MARK: - Item
 struct RepositoryInfo: Codable {
     let id: Int
     let name, fullName: String
     let itemPrivate: Bool
     let owner: Owner
-    let itemDescription: String
+    let itemDescription: String?
+    let stargazersCount: Int
     let score: Int
 
     enum CodingKeys: String, CodingKey {
@@ -36,11 +35,11 @@ struct RepositoryInfo: Codable {
         case itemPrivate = "private"
         case owner
         case itemDescription = "description"
+        case stargazersCount = "stargazers_count"
         case score
     }
 }
 
-// MARK: - Owner
 struct Owner: Codable {
     let login: String
     let avatarURL: String

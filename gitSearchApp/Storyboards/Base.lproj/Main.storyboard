@@ -16,6 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="3Rr-3j-aF1">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="KMk-gm-G9g"/>
+                                    <constraint firstAttribute="height" constant="50" id="dix-3N-pyv"/>
+                                </constraints>
+                            </activityIndicatorView>
                             <searchBar contentMode="redraw" placeholder="Enter repository name" translatesAutoresizingMaskIntoConstraints="NO" id="o8P-Zo-kfk">
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -27,22 +34,57 @@
                                 <rect key="frame" x="0.0" y="100" width="414" height="762"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultCell" textLabel="Z8N-uy-aBY" style="IBUITableViewCellStyleDefault" id="oCU-OW-xYe">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultCell" id="oCU-OW-xYe" customClass="SearchResultsTableViewCell" customModule="gitSearchApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oCU-OW-xYe" id="dEg-lM-Vz4">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z8N-uy-aBY">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IXA-Pe-Kxe">
+                                                    <rect key="frame" x="0.0" y="0.0" width="83" height="43"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4y-qx-jbR">
+                                                    <rect key="frame" x="88" y="11" width="207" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="zZF-DU-1dd">
+                                                    <rect key="frame" x="295" y="0.0" width="41" height="43"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kn6-Ia-EHr">
+                                                    <rect key="frame" x="341" y="0.0" width="73" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="K4y-qx-jbR" firstAttribute="width" secondItem="dEg-lM-Vz4" secondAttribute="width" multiplier="0.5" id="1cT-M4-pK5"/>
+                                                <constraint firstItem="IXA-Pe-Kxe" firstAttribute="width" secondItem="dEg-lM-Vz4" secondAttribute="width" multiplier="0.2" id="B55-yk-EZh"/>
+                                                <constraint firstItem="zZF-DU-1dd" firstAttribute="width" secondItem="dEg-lM-Vz4" secondAttribute="width" multiplier="0.1" id="Kdo-Nc-bgI"/>
+                                                <constraint firstAttribute="trailing" secondItem="kn6-Ia-EHr" secondAttribute="trailing" id="LVp-zj-y6K"/>
+                                                <constraint firstItem="zZF-DU-1dd" firstAttribute="leading" secondItem="K4y-qx-jbR" secondAttribute="trailing" id="Mdt-9O-nUc"/>
+                                                <constraint firstItem="IXA-Pe-Kxe" firstAttribute="leading" secondItem="dEg-lM-Vz4" secondAttribute="leading" id="Ni2-Xt-N6P"/>
+                                                <constraint firstItem="K4y-qx-jbR" firstAttribute="leading" secondItem="IXA-Pe-Kxe" secondAttribute="trailing" constant="5" id="OQS-3P-wto"/>
+                                                <constraint firstAttribute="bottom" secondItem="zZF-DU-1dd" secondAttribute="bottom" id="QwF-Hl-fET"/>
+                                                <constraint firstItem="kn6-Ia-EHr" firstAttribute="top" secondItem="dEg-lM-Vz4" secondAttribute="top" id="XHP-X1-xqB"/>
+                                                <constraint firstItem="K4y-qx-jbR" firstAttribute="bottom" secondItem="dEg-lM-Vz4" secondAttribute="bottomMargin" id="bN2-vH-YmB"/>
+                                                <constraint firstAttribute="bottom" secondItem="kn6-Ia-EHr" secondAttribute="bottom" id="fab-vS-8dP"/>
+                                                <constraint firstAttribute="bottom" secondItem="IXA-Pe-Kxe" secondAttribute="bottom" id="neS-Yl-Icp"/>
+                                                <constraint firstItem="kn6-Ia-EHr" firstAttribute="leading" secondItem="zZF-DU-1dd" secondAttribute="trailing" constant="5" id="oXz-Tv-tO3"/>
+                                                <constraint firstItem="IXA-Pe-Kxe" firstAttribute="top" secondItem="dEg-lM-Vz4" secondAttribute="top" id="w5F-vG-10s"/>
+                                                <constraint firstItem="zZF-DU-1dd" firstAttribute="top" secondItem="dEg-lM-Vz4" secondAttribute="top" id="wG4-Py-Jcw"/>
+                                                <constraint firstItem="K4y-qx-jbR" firstAttribute="top" secondItem="dEg-lM-Vz4" secondAttribute="topMargin" id="zMp-GQ-Sdg"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ratingLabel" destination="kn6-Ia-EHr" id="Ny3-cp-9I5"/>
+                                            <outlet property="repositoryNameLabel" destination="K4y-qx-jbR" id="lDK-Wt-xcx"/>
+                                            <outlet property="starImage" destination="zZF-DU-1dd" id="g9k-4R-1wl"/>
+                                            <outlet property="userPicImageView" destination="IXA-Pe-Kxe" id="11L-Rm-GTF"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -58,22 +100,26 @@
                             <constraint firstItem="wNg-e2-hQ1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AAW-J4-egz"/>
                             <constraint firstItem="o8P-Zo-kfk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="AWy-s0-15o"/>
                             <constraint firstItem="wNg-e2-hQ1" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="RYS-4w-ih2"/>
+                            <constraint firstItem="3Rr-3j-aF1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Yha-RT-Qr8"/>
                             <constraint firstItem="wNg-e2-hQ1" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="amM-Vn-IWw"/>
+                            <constraint firstItem="3Rr-3j-aF1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fNX-YQ-qYS"/>
                             <constraint firstItem="o8P-Zo-kfk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="r7p-Ij-qyd"/>
                             <constraint firstItem="wNg-e2-hQ1" firstAttribute="top" secondItem="o8P-Zo-kfk" secondAttribute="bottom" id="rWY-V6-v8Y"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="downloadIndicator" destination="3Rr-3j-aF1" id="Lmx-AG-ggY"/>
                         <outlet property="githubSearchBar" destination="o8P-Zo-kfk" id="D3d-tt-z5C"/>
                         <outlet property="searchResultsTableView" destination="wNg-e2-hQ1" id="H4k-u0-AzG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2190" y="-223"/>
+            <point key="canvasLocation" x="-2042.0289855072465" y="-233.03571428571428"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Star" width="16" height="16"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
