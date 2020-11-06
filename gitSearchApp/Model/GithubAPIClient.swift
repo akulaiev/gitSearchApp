@@ -106,11 +106,7 @@ class GithubAPIClient {
                 }
                 DispatchQueue.main.async {
                     let image = UIImage(data: data)
-                    guard let resizedImage = HelperMethods.resizeImage(originalImage: image!, resizeRatio: 0.21) else {
-                            completion(nil, "An error with an image has occured")
-                            return
-                    }
-                    completion(resizedImage, nil)
+                    completion(image, nil)
                 }
             }
             task.resume()

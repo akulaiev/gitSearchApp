@@ -23,9 +23,10 @@ class HelperMethods {
         }
     }
     
-    class func resizeImage(originalImage: UIImage, resizeRatio: CGFloat) -> UIImage? {
+    class func resizeImage(originalImage: UIImage, targetHeight: CGFloat) -> UIImage? {
         let size = originalImage.size
         var newSize: CGSize
+        let resizeRatio = targetHeight / originalImage.size.height
         newSize = CGSize.init(width: size.width * resizeRatio, height: size.height * resizeRatio)
         let rect = CGRect.init(x: 0, y: 0, width: newSize.width, height: newSize.height)
         UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)

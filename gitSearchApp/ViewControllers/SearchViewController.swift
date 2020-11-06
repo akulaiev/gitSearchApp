@@ -93,7 +93,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             cell.starImage.isHidden = false
             cell.ratingLabel.isHidden = false
             cell.ratingLabel.text = formatNumber("\(searchResults[indexPath.row].stargazersCount)")
-            cell.userPicImageView.image = userImages[indexPath.row]
+            cell.userPicImageView.image = HelperMethods.resizeImage(originalImage: userImages[indexPath.row], targetHeight: UIScreen.main.bounds.height / 10)
         }
         return cell
     }
