@@ -1,2 +1,2 @@
 # gitSearchApp
-Ana app, that searches github for 30 repositories by name.
+An app, that searches github for 30 repositories by name.
